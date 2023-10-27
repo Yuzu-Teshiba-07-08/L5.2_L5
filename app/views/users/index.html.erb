@@ -1,0 +1,11 @@
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
+
+<% @user.each do |e| %>
+    <p>
+        <%= e.uid %>
+        <%=link_to '削除', users_destroy_path(e), data: { action: :destroy } %>
+    </p>
+<% end %>
+ <%=link_to '登録画面', users_new_path%>
