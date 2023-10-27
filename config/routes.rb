@@ -1,18 +1,24 @@
 Rails.application.routes.draw do
+  get 'tops/main'
+  get 'tops/login'
+  get 'tops/logout'
+  get 'tweets/index'
+  get 'tweets/new'
+  get 'tweets/create'
+  get 'tweets/destory'
   get 'likes/create'
   get 'likes/destory'
-  get 'tweet/index'
-  get 'tweet/new'
-  get 'tweet/create'
-  get 'tweet/destory'
+  
   get 'users/index'
   get 'users/new'
   get 'users/create'
   get 'users/destroy'
-  resources :user
+  #resources :user
   root 'users#index'
-  resources :tweet
-  root 'tweets#index'
+  #resources :tweet
+  #root 'tweets#index'
+  post 'top/login'
+  get 'top/logout'
   
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

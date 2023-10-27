@@ -1,16 +1,16 @@
-class TweetController < ApplicationController
+class TweetsController < ApplicationController
   def index
-     @tweets = Tweet.all
+    @tweets = Tweet.all
       logger.debug("*******")
       logger.debug(@tweets.first.message)
   end
 
   def new
-     @tweet = Tweet.new
+    @tweet = Tweet.new
   end
 
   def create
-     @tweet = Tweet.new(message: params[:tweet][:message], tdate: Time.current)
+    @tweet = Tweet.new(message: params[:tweet][:message], tdate: Time.current)
       if @tweet.save
         flash[:notice] = '1レコード追加しました'
         redirect_to '/'
