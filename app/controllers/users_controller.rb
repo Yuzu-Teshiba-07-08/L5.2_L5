@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @user = User.all
+    @users = User.all
     logger.debug("*******")
     
   end
@@ -10,10 +10,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(uid: params[:uid],pass: params[:pass])
+    @user = User.new(uid: params[:user][:uid],pass: params[:user][:pass])
     if @user.save
-        flash[:notice] = 'ユーザーを追加しました'
-        redirect_to '/'
+      redirect_to root_path
+        # flash[:notice] = 'ユーザーを追加しました'
+        # redirect_to '/'
     else
         render 'new'
     end

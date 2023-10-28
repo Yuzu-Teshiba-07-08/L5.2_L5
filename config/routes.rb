@@ -2,20 +2,20 @@ Rails.application.routes.draw do
   get 'tops/main'
   get 'tops/login'
   get 'tops/logout'
-  get 'tweets/index'
-  get 'tweets/new'
-  get 'tweets/create'
-  get 'tweets/destory'
+  # get 'tweets/index'
+  # get 'tweets/new'
+  # get 'tweets/create'
+  # get 'tweets/destory'
   get 'likes/create'
   get 'likes/destory'
   
-  get 'users/index'
-  get 'users/new'
-  get 'users/create'
-  get 'users/destroy'
-  #resources :user
+  # get 'users/index'
+  # get 'users/new'
+  # get 'users/create'
+  # get 'users/destroy'
+  resources :users
   root 'users#index'
-  #resources :tweet
+  resources :tweets
   #root 'tweets#index'
   post 'top/login'
   get 'top/logout'
