@@ -12,15 +12,15 @@ class TopsController < ApplicationController
             if User.find_by(uid: params[:uid]) and User.find_by(pass: params[:pass])
                 session[:login_uid]=params[:uid]
                 redirect_to tops_main_path
-            else
-                render "error"
-                #logger.debug "error"
-                #render plain:"エラーです"
+            # else
+            #     render "error"
+            #     #logger.debug "error"
+            #     #render plain:"エラーです"
             end
   end
 
   def logout
      session.delete(:login_uid)
-            redirect_to tops_main_path
+            redirect_to root_path
   end
 end
