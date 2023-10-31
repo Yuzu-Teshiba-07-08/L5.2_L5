@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'tops/login'
   get 'tops/logout'
   # get 'tweets/index'
-  # get 'tweets/new'
+  get 'tweets/new'
   # get 'tweets/create'
   # get 'tweets/destory'
   get 'likes/create'
@@ -12,13 +12,13 @@ Rails.application.routes.draw do
   # get 'users/index'
   # get 'users/new'
   # get 'users/create'
-  # get 'users/destroy'
+  get 'users/destroy'
   resources :users
   root 'users#index'
   resources :tweets
   #root 'tweets#index'
-  post 'top/login'
-  get 'top/logout'
+  post 'tops/login'
+  get 'tops/logout'
   
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,2 +1,8 @@
-<h1>Tops#login</h1>
-<p>Find me in app/views/tops/login.html.erb</p>
+
+<%= form_tag '/tops/login', method: :post, data:{turbo:false} do %>
+<%= label_tag :uid, 'ユーザーID' %>
+<%= text_field_tag :uid %>
+<%= label_tag :pass, 'パスワード' %>
+<%= password_field_tag :pass %>
+<%= submit_tag '登録' %>
+<% end %>

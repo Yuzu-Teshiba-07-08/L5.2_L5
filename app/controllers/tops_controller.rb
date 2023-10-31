@@ -10,9 +10,8 @@ class TopsController < ApplicationController
   def login
      logger.debug params[:uid]
             if User.find_by(uid: params[:uid]) and User.find_by(pass: params[:pass])
-                #params[:uid]=="kindai" and params[:pass]=="sanriko"
                 session[:login_uid]=params[:uid]
-                redirect_to top_main_path
+                redirect_to tops_main_path
             else
                 render "error"
                 #logger.debug "error"
@@ -22,6 +21,6 @@ class TopsController < ApplicationController
 
   def logout
      session.delete(:login_uid)
-            redirect_to top_main_path
+            redirect_to tops_main_path
   end
 end
