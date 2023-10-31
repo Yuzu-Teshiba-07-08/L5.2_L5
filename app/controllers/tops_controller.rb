@@ -1,26 +1,28 @@
+require 'bcrypt'
+
 class TopsController < ApplicationController
   def main
-     if session[:login_uid] !=nil
-            render "main"
-        else
-            render "login"
-        end
+        render "login"
+       
   end
 
   def login
-     logger.debug params[:uid]
-            if User.find_by(uid: params[:uid]) and User.find_by(pass: params[:pass])
-                session[:login_uid]=params[:uid]
-                redirect_to tops_main_path
-            # else
-            #     render "error"
-            #     #logger.debug "error"
-            #     #render plain:"エラーです"
-            end
+     #logger.debug params[:uid]
+    user=User.find_by(uid: params[:uid])
+    
+    if user !=nil 
+      login_password = BCrypt::Password.new(user.pass)
+      if  login_password==params[:pass]
+        session[:login_uid] = user.uid
+        redirect_to tweets_path
+      else
+        render "login"
+      end   
+    end
   end
 
   def logout
-     session.delete(:login_uid)
-            redirect_to root_path
+    session.delete(:login_uid)
+    redirect_to root_path
   end
 end

@@ -1,6 +1,4 @@
-<% if flash[:notice] %>
-    <%= flash[:notice] %>
-<% end %>
+
 
 <% @tweets.each do |e| %>
     <p>
@@ -12,12 +10,16 @@
         <%=link_to '削除', tweets_path(e), data: { turbo_method: :delete } %>
         <%= link_to 'いいね', likes_create_path(tweet_id: e.id), date:{"turbo_method": :post} %>
         <%= link_to 'いいね削除', likes_destory_path(e), method: :delete %>
-        <!--<%=link_to '表示', tweets_path(e) %>-->
-        <!--<%=link_to '編集', tweets_path(e) %>-->
+        
         
       
     </p>
 <% end %>
-<%= link_to 'ツイートする', tweets_new_path %>
+<%= form_for @tweet , url: {action: :create} do |f| %>
+   <%= f.label :message,'message'%>
+    <%= f.text_field :message%>
+    <%= f.submit'tweet'%>
+<% end %>
+
 <%= link_to 'ログアウト', tops_logout_path %>
 
