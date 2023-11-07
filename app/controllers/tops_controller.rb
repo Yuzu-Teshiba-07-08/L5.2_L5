@@ -13,8 +13,8 @@ class TopsController < ApplicationController
     if user !=nil 
       login_password = BCrypt::Password.new(user.pass)
       if  login_password==params[:pass]
-          # current_user=user.uid
-        session[:login_uid] = user.uid
+          session[:login_uid] = user.uid
+        #session[:login_uid] = user.uid
         redirect_to tweets_path
       else
         render "login"
