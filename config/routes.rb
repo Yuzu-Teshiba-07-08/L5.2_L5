@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # get 'carts/show'
+  get 'carts/show'
   # get 'cart_items/new'
   # get 'cart_items/create'
   # get 'cart_items/destroy'
@@ -14,18 +14,19 @@ Rails.application.routes.draw do
   # get 'top/main'
   resources :cart_items, only: [:new, :create, :destroy]
   resources :carts, only: [:show]
+  root 'products#index'
 
-  get 'tops/main'
-  get 'tops/login'
-  get 'tops/logout'
-  root 'users#index'
-  get 'users/destroy'
-  resources :users
-  resources :tweets
-  get 'likes/create'
-  get 'likes/destory'
-  post 'tops/login'
-  get 'tops/logout'
+  # get 'tops/main'
+  # get 'tops/login'
+  # get 'tops/logout'
+  # root 'users#index'
+  # get 'users/destroy'
+  # resources :users
+  # resources :tweets
+  # get 'likes/create'
+  # get 'likes/destory'
+  # post 'tops/login'
+  # get 'tops/logout'
   # get 'tweets/index'
   # get 'tweets/create'
   # get 'tweets/destory'

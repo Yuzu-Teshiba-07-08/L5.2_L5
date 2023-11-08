@@ -1,12 +1,13 @@
 <h1>カート</h1>
 <% @cart_item.each do |e| %>
+<% product=Product.find(e.product_id)%>
 
     <p>
-    id:<%= e.id %>
-    name: <%= e.name %>
-    price: <%= e.price %>
-    qty:<%=e.qty%>
-    
+   
+    商品: <%= e.product.name %>
+    値段: <%= e.price %>円
+    個数:<%=e.qty%>個
+    <%= e.product.price*e.qty %>
     
     <%=link_to '削除', cart_items_path(e), data: { turbo_method: :delete } %>
        
