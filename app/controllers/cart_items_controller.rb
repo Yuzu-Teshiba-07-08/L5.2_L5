@@ -1,21 +1,25 @@
 class CartItemsController < ApplicationController
   def new
+    @cart_id=current_cart.id
+    @product_id=params[:product_id]
     @cartitem=Cartitem.new
   end
 
   def create
-    @cartitem.new(
-      cart_id: cart.find_by(cart_id: current_cart),
-      qty: params[:cart_item][:qty],
-      product_id: Product.find(params[:id]))
-    @cartitem.save
-     
-    redirect_to new_cart_item_path
+    @cart_id=params[:cartitem][:cart_id]
+    @product_id=params[:cartitem][:product_id]
+    @qty=params[:cartitem][:qty]
+    @cartitem= Cartitem.new(cart_id: @cart_id,product_id: @product_id,qty: @qty)
+    if @cartitem.save
+      redirect_to carts_show_path
+    else
+      render "new"
+    end
   end
     
-   
- 
-
+    
+    
+    
   def destroy
     Cartitem.find(params[:id]).destroy
   end
